@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-row {
+    gap: 5%;
+}
+
+.frontCard {
+    background-image: url(/images/bg-card-front.png);
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.backCard {
+    background-image: url(/images/bg-card-back.png);
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.footerLinks {
+    font-size: 11px;
+    text-align: center;
+}
+
+.footerLinks a {
+    color: hsl(228, 45%, 44%);
+}
+
