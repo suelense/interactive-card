@@ -1,34 +1,92 @@
-* {
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+:root {
+    --white: hsl(0, 0%, 100%);
+    --light-grayish-violet: hsl(270, 3%, 87%);
+    --dark-grayish-violet: hsl(279, 6%, 55%);
+    --very-dark-violet: hsl(278, 68%, 11%);
 }
 
-.flex-row {
-    gap: 5%;
+.body-style {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    background-image: url(/images/bg-main-desktop.png);
+    background-repeat: no-repeat;
 }
 
-.frontCard {
+.div-card {
+    color: var(--white);
+    width: 447px;
+    min-height: 245px;
+    background-size: 100%;
+    padding: 5%;
+    background-repeat: no-repeat;
+}
+
+.front-card {
     background-image: url(/images/bg-card-front.png);
-    background-size: cover;
-    border-radius: 5px;
+    margin-top: 30%;
+
 }
 
-.backCard {
+.back-card {
     background-image: url(/images/bg-card-back.png);
+    margin-left: 20%;
+    margin-top: 10%;
 }
 
-
-footer {
-    position: fixed;
-    bottom: 0;
+.card-cvc {
+    padding-top: 85px;
+    padding-left: 330px;
 }
 
-.footerLinks {
-    font-size: 11px;
-    text-align: center;
+form {
+    width: 420px;
+}
+
+label {
+    color: var(--very-dark-violet);
+}
+
+input,
+select {
+    height: 40px;
+    color: var(--dark-grayish-violet);
+    border-color: var(--light-grayish-violet);
+    padding: 5%;
+}
+
+#errorName,
+#errorNumber,
+#errorDate,
+#errorCvc{
+    display: none;
+}
+
+button {
+    color: var(--white);
+    height: 50px;
+    background-color: var(--very-dark-violet);
+}
+
+.h3,
+.card-name,
+.card-cvc,
+.card-date {
+    letter-spacing: 3px;
 }
 
 .footerLinks a {
-    color: hsl(228, 45%, 44%);
+    color: var(--very-dark-violet);
 }
 
+/*- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+- Linear gradient (active input border): hsl(249, 99%, 64%) to hsl(278, 94%, 30%)
+- Red (input errors): hsl(0, 100%, 66%)
+*/

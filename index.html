@@ -12,49 +12,65 @@
   <title>Interactive card details form</title>
 </head>
 
-<body>
-  <main class="d-flex flex-row">
+<body class="body-style">
+  <main class="d-flex justify-content-around align-items-center">
     <section>
-      <div class="frontCard">
-        <p>0000 0000 0000 0000</p>
-        <p>Jane Appleseed</p>
-        <p>00/00</p>
+      <div class="div-card front-card">
+        <img src="/images/card-logo.svg">
+        <br><br><br>
+        <p class="h3" id="cardNumber">0000 0000 0000 0000</p>
+        <br>
+        <div class="d-flex justify-content-between">
+          <p class="card-name text-uppercase fs-6" id="cardName">JANE APPLESEED</p>
+          <p class="card-date fs-6"><span id="cardExpirationMonth">00</span>/<span id="cardExpirationYear">00</span></p>
+        </div>
       </div>
-      <div class="backCard">
-        <p>000</p>
+      <div class="div-card back-card">
+        <p class="card-cvc fs-6" id="cardCvc">000</p>
       </div>
     </section>
     <section>
       <form>
-        <label>Cardholder Name</label><br>
-        <input placeholder="e.g. Jane Appleseed"><br>
-        <label>Card Number</label><br>
-        <input type="text" name="" id="" placeholder="e.g. 1234 5678 9123 0000"><br>
-        <div class="d-flex flex-row">
-          <div>
-            <label>Exp. Date (MM/YY)</label><br>
-            <input type="text" name="" id="" placeholder="MM">
-            <input type="text" name="" id="" placeholder="YY">
+        <label>CARDHOLDER NAME</label><br>
+        <input type="text" id="inputName" class="rounded border w-100" maxlength="18" onkeyup="showInput('inputName', 'cardName')" placeholder="e.g. Jane Appleseed">
+        <p class="text-danger"><span id="errorName">Type your name</p>
+        <label>CARD NUMBER</label><br>
+        <input type="text" pattern='\d*' id="inputNumber" class="rounded border w-100 " maxlength="16" onkeyup="showInput('inputNumber','cardNumber')" placeholder="e.g. 1234 5678 9123 0000">
+        <p class="text-danger"><span id="errorNumber">Enter a valid number</p>
+        <div class="d-flex justify-content-between gap-4">
+          <div class="w-50">
+            <label>EXP. DATE (MM/YY)</label><br>
+            <div class="d-flex justify-content-between gap-2">
+              <select id="selectMonth" class="rounded border w-100" data-name="selectMonth" onchange="showInput('selectMonth','cardExpirationMonth')"></select>
+              <select id="selectYear" class="rounded border w-100" data-name="selectYear" onchange="showInput('selectYear','cardExpirationYear')"></select>
+            </div>
           </div>
           <div>
             <label>CVC</label><br>
-            <input type="text" name="" id="" placeholder="e.g. 123">
+            <input type="text" id="inputCvc" class="rounded border w-100" maxlength="3" onkeyup="showInput('inputCvc','cardCvc')" placeholder="e.g. 123">
           </div>
         </div>
-        <button>Confirm</button>
+        <div class="d-flex gap-4">
+          <p class="text-danger w-50"><span id="errorDate">Select a valid date</p>
+          <p class="text-danger"><span id="errorCvc">Enter a valid CVC</p>
+        </div>
+        <button type="button" class="rounded w-100" onclick="register()">Confirm</button>
       </form>
-      <p>Thank you!</p>
-      <p>We've added your card details</p>
-      <button>Continue</button>
+      <div class="d-none">
+        <img src="/images/icon-complete.svg">
+        <p>Thank you!</p>
+        <p>We've added your card details</p>
+        <button class="rounded w-100">Continue</button>
+      </div>
     </section>
   </main>
-  <footer>
+  <footer class="position-fixed bottom-0 end-0">
     <div class="footerLinks">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
       Coded by <a href="https://github.com/suelense">Suelen Santos</a>.
     </div>
   </footer>
-  <script href="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
