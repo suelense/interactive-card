@@ -1,12 +1,13 @@
+## FrontEnd Mentor Challenge
+Website for registering credit cards, with validation of empty or incorrect data.
+
 ### Screenshot
 
+![image](https://github.com/suelense/interactive-card/assets/90277436/66ea78ab-efa4-433e-a866-a43a488edb6e)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/suelense/interactive-card/)
-- Live Site URL: [Add live site URL here](https://suelense.github.io/interactive-card/)
-
-## My process
+- Live Site URL: (https://suelense.github.io/interactive-card/)
 
 ### Built with
 
