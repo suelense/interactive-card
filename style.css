@@ -9,7 +9,7 @@
 .body-style {
     font-family: "Space Grotesk", sans-serif;
     font-weight: 500;
-    background-image: url(/images/bg-main-desktop.png);
+    background-image: url(./images/bg-main-desktop.png);
     background-repeat: no-repeat;
 }
 
@@ -32,13 +32,13 @@
 
 .front-card {
     width: 130%;
-    background-image: url(/images/bg-card-front.png);
+    background-image: url(./images/bg-card-front.png);
     margin-top: 30%;
 }
 
 .back-card {
     width: 130%;
-    background-image: url(/images/bg-card-back.png);
+    background-image: url(./images/bg-card-back.png);
     margin-left: 20%;
     margin-top: 10%;
 }
