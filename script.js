@@ -112,6 +112,10 @@ function register() {
   if (validateName("inputName", "errorName") && validateCardNumber("inputNumber", "errorNumber") && validateDate("selectMonth", "selectYear", "errorDate") && validateCvc("inputCvc", "errorCvc")) {
     displayNone("cardForm");
     displayBlock("messageCardAdded");
+    localStorage.setItem("cardName", getData("inputName"));
+    localStorage.setItem("cardNumber", getData("inputNumber"))
+    localStorage.setItem("cardDate", `${getData("selectMonth")}/${getData("selectYear")}`)
+    localStorage.setItem("cardCvc", getData("inputCvc"));
   }
 }
 
