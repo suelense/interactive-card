@@ -35,7 +35,6 @@ function showInput(inputId, pId) {
 function select(start, end, dataName) {
   var select = document.querySelector(`[data-name="${dataName}"]`);
   var option = "<option value=''></option>";
-
   for (i = start; i <= end; i++) {
     if (i <= 9) {
       var element = `<option value="0${i}">0${i}</option>`;
@@ -116,5 +115,7 @@ function register() {
   }
 }
 
-select(1, 12, "selectMonth");
-select(1, 99, "selectYear");
+function showSelect() {
+  select(1, 12, "selectMonth");
+  select(1, 99, "selectYear");
+}
