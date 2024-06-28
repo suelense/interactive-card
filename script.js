@@ -33,7 +33,7 @@ function showInput(inputId, pId) {
 }
 
 function select(start, end, dataName) {
-  var select = getData(dataName);
+  var select = document.querySelector(`[data-name="${dataName}"]`);
   var option = "<option value=''></option>";
 
   for (i = start; i <= end; i++) {
