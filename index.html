@@ -8,46 +8,49 @@
   <link href="style.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
   <title>Interactive card details form</title>
 </head>
 
 <body class="body-style">
-  <main class="d-flex justify-content-around align-items-center">
-    <section>
+  <main class="main-cards">
+    <section class="section-card">
       <div class="div-card front-card">
-        <img src="/images/card-logo.svg">
-        <br><br><br>
-        <p class="h3" id="cardNumber">0000 0000 0000 0000</p>
-        <br>
+        <img src="/images/card-logo.svg" alt="card-logo">
+        <div id="cardNumber">0000 0000 0000 0000</div>
         <div class="d-flex justify-content-between">
-          <p class="card-name text-uppercase fs-6" id="cardName">JANE APPLESEED</p>
-          <p class="card-date fs-6"><span id="cardExpirationMonth">00</span>/<span id="cardExpirationYear">00</span></p>
+          <p class="card-name text-uppercase" id="cardName">JANE APPLESEED</p>
+          <p class="card-date"><span id="cardExpirationMonth">00</span>/<span id="cardExpirationYear">00</span></p>
         </div>
       </div>
       <div class="div-card back-card">
-        <p class="card-cvc fs-6" id="cardCvc">000</p>
+        <p class="card-cvc" id="cardCvc">000</p>
+        <br><br><br><br>
       </div>
     </section>
     <section>
-      <form>
+      <form id="cardForm">
         <label>CARDHOLDER NAME</label><br>
-        <input type="text" id="inputName" class="rounded border w-100" maxlength="18" onkeyup="showInput('inputName', 'cardName')" placeholder="e.g. Jane Appleseed">
+        <input type="text" id="inputName" class="rounded w-100" maxlength="18"
+          onkeyup="showInput('inputName', 'cardName')" placeholder="e.g. Jane Appleseed">
         <p class="text-danger"><span id="errorName">Type your name</p>
         <label>CARD NUMBER</label><br>
-        <input type="text" pattern='\d*' id="inputNumber" class="rounded border w-100 " maxlength="16" onkeyup="showInput('inputNumber','cardNumber')" placeholder="e.g. 1234 5678 9123 0000">
+        <input type="text" pattern='\d*' id="inputNumber" class="rounded w-100 " maxlength="16"
+          onkeyup="showInput('inputNumber','cardNumber')" placeholder="e.g. 1234 5678 9123 0000">
         <p class="text-danger"><span id="errorNumber">Enter a valid number</p>
         <div class="d-flex justify-content-between gap-4">
-          <div class="w-50">
+          <div>
             <label>EXP. DATE (MM/YY)</label><br>
             <div class="d-flex justify-content-between gap-2">
-              <select id="selectMonth" class="rounded border w-100" data-name="selectMonth" onchange="showInput('selectMonth','cardExpirationMonth')"></select>
-              <select id="selectYear" class="rounded border w-100" data-name="selectYear" onchange="showInput('selectYear','cardExpirationYear')"></select>
+              <select id="selectMonth" class="rounded w-100" data-name="selectMonth"
+                onchange="showInput('selectMonth','cardExpirationMonth')"></select>
+              <select id="selectYear" class="rounded w-100" data-name="selectYear"
+                onchange="showInput('selectYear','cardExpirationYear')"></select>
             </div>
           </div>
           <div>
             <label>CVC</label><br>
-            <input type="text" id="inputCvc" class="rounded border w-100" maxlength="3" onkeyup="showInput('inputCvc','cardCvc')" placeholder="e.g. 123">
+            <input type="text" id="inputCvc" class="rounded w-100" maxlength="3"
+              onkeyup="showInput('inputCvc','cardCvc')" placeholder="e.g. 123">
           </div>
         </div>
         <div class="d-flex gap-4">
@@ -56,11 +59,11 @@
         </div>
         <button type="button" class="rounded w-100" onclick="register()">Confirm</button>
       </form>
-      <div class="d-none">
-        <img src="/images/icon-complete.svg">
-        <p>Thank you!</p>
-        <p>We've added your card details</p>
-        <button class="rounded w-100">Continue</button>
+      <div id="messageCardAdded">
+        <img src="/images/icon-complete.svg" alt="icon-complete"><br><br>
+        <p id="messageTitle" class="h3">THANK YOU!</p>
+        <p>We've added your card details</p><br><br>
+        <a href="index.html"><button class="rounded w-100">Continue</button></a>
       </div>
     </section>
   </main>

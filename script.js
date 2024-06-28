@@ -10,9 +10,13 @@ function displayNone(id) {
   return document.getElementById(id).style.display = "none";
 }
 
+function changeBorderColor(id, color) {
+  return document.getElementById(id).style.borderColor = color;
+}
+
 function showInput(inputId, pId) {
   if (inputId == "inputNumber") {
-    inputValue = document.getElementById(inputId).value;
+    inputValue = getData(inputId);
     text = ""
     for (i = 0; i < inputValue.length; i++) {
       t = inputValue[i];
@@ -23,78 +27,94 @@ function showInput(inputId, pId) {
       }
     }
   } else {
-
-    text = document.getElementById(inputId).value;
+    text = getData(inputId);
   }
   document.getElementById(pId).textContent = text;
 }
 
 function select(start, end, dataName) {
-  selectMonth = document.querySelector('[data-name="selectMonth"]');
-  selectYear = document.querySelector('[data-name="selectYear"]');
-  option = "<option value=''></option>";
+  var select = getData(dataName);
+  var option = "<option value=''></option>";
 
-  for (i = 1; i <= 12; i++) {
+  for (i = start; i <= end; i++) {
     if (i <= 9) {
-      element = `<option value="0${i}">0${i}</option>`;
+      var element = `<option value="0${i}">0${i}</option>`;
     } else {
-      element = `<option value="${i}">${i}</option>`;
+      var element = `<option value="${i}">${i}</option>`;
     }
     option += element;
-    selectMonth.innerHTML = option;
   }
+  select.innerHTML = option;
+}
 
-  for (i = 1; i <= 99; i++) {
-    if (i <= 9) {
-      element = `<option value="0${i}">0${i}</option>`;
-    } else {
-      element = `<option value="${i}">${i}</option>`;
-    }
-    option += element;
-    selectYear.innerHTML = option;
+function emptyData(idInput) {
+  return getData(idInput).length == 0;
+}
+
+function showErrorMessage(idInput, idError) {
+  displayBlock(idError);
+  changeBorderColor(idInput, "red")
+}
+
+function hideErrorMessage(idInput, idError) {
+  displayNone(idError)
+  changeBorderColor(idInput, "var(--light-grayish-violet)")
+}
+
+function validateName(idInput, idError) {
+  if (emptyData(idInput)) {
+    showErrorMessage(idInput, idError);
+    return false;
+  } else {
+    hideErrorMessage(idInput, idError);
+    return true;
   }
 }
 
-function emptyData(id, idError) {
-  data = getData(id);
-  if (data.length == 0) {
-    displayBlock(idError);
+function validateCardNumber(idInput, idError) {
+  cardNumber = getData(idInput);
+  if (emptyData(idInput) || cardNumber.length < 16 || isNaN(cardNumber)) {
+    showErrorMessage(idInput, idError);
+    return false;
   } else {
-    displayNone(idError)
+    hideErrorMessage(idInput, idError);
+    return true;
+  }
+}
+
+function validateDate(idMonth, idYear, idError) {
+  if (emptyData(idMonth) || emptyData(idYear)) {
+    showErrorMessage(idMonth, idError);
+    showErrorMessage(idYear, idError);
+    return false;
+  } else {
+    hideErrorMessage(idMonth, idError);
+    hideErrorMessage(idYear, idError);
+    return true;
+  }
+}
+
+function validateCvc(idInput, idError) {
+  cvc = getData(idInput);
+  if (emptyData(idInput) || cvc.length < 3 || isNaN(cvc)) {
+    showErrorMessage(idInput, idError);
+    return false;
+  } else {
+    hideErrorMessage(idInput, idError);
+    return true;
   }
 }
 
 function register() {
-  emptyData("inputName", "errorName");
-  emptyData("inputNumber", "errorNumber");
-  emptyData("inputCvc", "errorCvc");
-  emptyData("selectMonth", "errorDate");
-  emptyData("selectYear", "errorDate");
+  validateName("inputName", "errorName");
+  validateCardNumber("inputNumber", "errorNumber");
+  validateDate("selectMonth", "selectYear", "errorDate");
+  validateCvc("inputCvc", "errorCvc");
+  if (validateName("inputName", "errorName") && validateCardNumber("inputNumber", "errorNumber") && validateDate("selectMonth", "selectYear", "errorDate") && validateCvc("inputCvc", "errorCvc")) {
+    displayNone("cardForm");
+    displayBlock("messageCardAdded");
+  }
 }
-select();
 
-
-/*Users should be able to:
-
-- Fill in the form and see the card details update in real-time
-- Receive error messages when the form is submitted if:
-  - Any input field is empty
-  - The card number, expiry date, or CVC fields are in the wrong format
-- View the optimal layout depending on their device's screen size
-- See hover, active, and focus states for interactive elements on the page 
-
-Your users should be able to: 
-
-- Fill in the form and see the card details update in real-time
-- Receive error messages when the form is submitted if:
-  - Any input field is empty
-  - The card number, expiry date, or CVC fields are in the wrong format
-- View the optimal layout depending on their device's screen size
-- See hover, active, and focus states for interactive elements on the page
-
-
-- Update the details on the card as the user fills in the fields
-- Validate the form fields when the form is submitted
-- If there are no errors, display the completed state
-- Reset the form when the user clicks "Continue" on the completed state
-*/
+select(1, 12, "selectMonth");
+select(1, 99, "selectYear");

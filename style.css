@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 :root {
-    --white: hsl(0, 0%, 100%);
     --light-grayish-violet: hsl(270, 3%, 87%);
     --dark-grayish-violet: hsl(279, 6%, 55%);
     --very-dark-violet: hsl(278, 68%, 11%);
@@ -14,43 +13,52 @@
     background-repeat: no-repeat;
 }
 
+.main-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.section-card {
+    width: 20%;
+}
+
 .div-card {
-    color: var(--white);
-    width: 447px;
-    min-height: 245px;
+    color: white;
     background-size: 100%;
     padding: 5%;
     background-repeat: no-repeat;
 }
 
 .front-card {
+    width: 130%;
     background-image: url(/images/bg-card-front.png);
     margin-top: 30%;
-
 }
 
 .back-card {
+    width: 130%;
     background-image: url(/images/bg-card-back.png);
     margin-left: 20%;
     margin-top: 10%;
 }
 
+#cardNumber {
+    padding-top: 10%;
+    font-size: 1.5rem;
+    margin-bottom: 8%
+}
+
 .card-cvc {
-    padding-top: 85px;
-    padding-left: 330px;
-}
-
-form {
-    width: 420px;
-}
-
-label {
-    color: var(--very-dark-violet);
+    padding-top: 20%;
+    padding-left: 80%;
+    position: relative;
 }
 
 input,
 select {
-    height: 40px;
+    height: 3rem;
+    border: solid 1px;
     color: var(--dark-grayish-violet);
     border-color: var(--light-grayish-violet);
     padding: 5%;
@@ -59,34 +67,97 @@ select {
 #errorName,
 #errorNumber,
 #errorDate,
-#errorCvc{
+#errorCvc,
+#messageCardAdded {
     display: none;
 }
 
 button {
-    color: var(--white);
-    height: 50px;
+    color: white;
+    height: 3rem;
     background-color: var(--very-dark-violet);
 }
 
-.h3,
 .card-name,
 .card-cvc,
 .card-date {
-    letter-spacing: 3px;
+    font-size: 0.8rem;
+    letter-spacing: 0.19rem;
 }
 
+#messageCardAdded {
+    color: var(--dark-grayish-violet);
+    width: 320px;
+    text-align: center;
+}
+
+label,
+#messageTitle,
 .footerLinks a {
     color: var(--very-dark-violet);
 }
 
-/*- Mobile: 375px
-- Desktop: 1440px
+@media (max-width: 1025px) {
+    .body-style {
+        background-size: 100% 30%;
+    }
 
-## Colors
+    .main-cards {
+        display: block;
+        margin: 10%;
+    }
 
-### Primary
+    .section-card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 
-- Linear gradient (active input border): hsl(249, 99%, 64%) to hsl(278, 94%, 30%)
-- Red (input errors): hsl(0, 100%, 66%)
-*/
+    .front-card {
+        width: 80%;
+        margin-top: -15%;
+        order: 2;
+        padding-bottom: 15%;
+    }
+
+    .back-card {
+        width: 80%;
+        margin-left: 20%;
+        margin-top: 0%;
+        order: 1
+    }
+}
+
+@media (max-width: 480px) {
+    .main-cards {
+        margin: 5%;
+    }
+
+    #cardNumber {
+        font-size: 1rem;
+    }
+
+    .front-card {
+        margin-top: -25%;
+    }
+}
+
+@media (max-width: 375px) {
+    #cardNumber {
+        padding-top: 2%;
+    }
+
+    .front-card {
+        margin-top: -35%;
+    }
+
+    .card-name,
+    .card-date,
+    .card-cvc {
+        font-size: 0.5em;
+    }
+
+    label {
+        font-size: 0.7rem;
+    }
+}
