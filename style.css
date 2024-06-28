@@ -25,7 +25,6 @@
 
 .div-card {
     color: white;
-    background-size: 100%;
     padding: 5%;
     background-repeat: no-repeat;
 }
@@ -33,12 +32,14 @@
 .front-card {
     width: 130%;
     background-image: url(./images/bg-card-front.png);
+    background-size: 100% 100%;
     margin-top: 30%;
 }
 
 .back-card {
     width: 130%;
     background-image: url(./images/bg-card-back.png);
+    background-size: 100% 100%;
     margin-left: 20%;
     margin-top: 10%;
 }
@@ -50,7 +51,7 @@
 }
 
 .card-cvc {
-    padding-top: 20%;
+    padding-top: 30%;
     padding-left: 80%;
     position: relative;
 }
