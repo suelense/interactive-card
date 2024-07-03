@@ -106,7 +106,7 @@ function validateDate(idMonth, idYear, idError) {
 }
 
 function validateCvc(idInput, idError) {
-  //valida o campo Cvc
+  //Valida o campo Cvc
   cvc = getData(idInput);
   if (emptyData(idInput) || cvc.length < 3 || isNaN(cvc)) {
     showErrorMessage(idInput, idError);
@@ -118,7 +118,7 @@ function validateCvc(idInput, idError) {
 }
 
 function register() {
-  //Execulta todas as validações e se estiver Ok, mostra a mensagem de sucesso
+  //Executa todas as validações e se estiver Ok, mostra a mensagem de sucesso
   validateName("inputName", "errorName");
   validateCardNumber("inputNumber", "errorNumber");
   validateDate("selectMonth", "selectYear", "errorDate");
